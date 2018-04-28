@@ -1,0 +1,15 @@
+<!--pages/ranking/ranking.wxml-->
+<view class="container ranking-list">
+  <text class='header'>男生</text>
+  <view class="male-list" wx:for="{{rankingCategory.male}}" wx:for-item="maleItem">
+    <navigator url="rankingtwo?rankingId={{maleItem._id}}" hover-clas="click-backgroud">
+      <view class="male-item">{{maleItem.title}}</view>
+    </navigator>
+  </view>
+  <text class='header'>女生</text>
+  <view class="female-list" wx:for="{{rankingCategory.female}}" wx:for-item="femaleItem">
+    <navigator url="rankingtwo?rankingId={{femaleItem._id}}" hover-clas="click-backgroud">
+      <view class="female-item">{{femaleItem.title}}</view>
+    </navigator>
+  </view>
+</view>

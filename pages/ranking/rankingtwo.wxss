@@ -1,0 +1,71 @@
+/* pages/ranking/rankingtwo.wxss */
+
+.ranking-list {
+   width: 100% 
+}
+
+.ranking-item {
+  padding: 10px;
+  border-bottom: 1px solid #f3f3f3;
+   display: flex;
+  flex-direction: row; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cover-img {
+  width: 80px;
+  height: 100px;
+}
+
+.right-content {
+  margin-left: 8px;
+  
+  flex: 1;
+  margin-right: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+  align-self:center;
+}
+
+.title {
+  font-size: 32rpx;
+}
+
+.author {
+  font-size: 28rpx;
+  margin-top: 4px;
+  color: #333;
+}
+
+.desc {  
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.data-num {
+  color: #333;
+  font-size: 28rpx;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row;
+}
+
+.like {
+  color: #f00;
+}
+
+.retentionRatio {
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 1px solid #333;
+  color: #f00;
+}
+
+.percent {
+  color: #f00;
+}

@@ -1,0 +1,26 @@
+/* pages/ranking/ranking.wxss */
+
+.header {
+  background: #f3f3f3;
+  padding: 10px;
+}
+
+.male-list {
+}
+
+.male-item {
+  padding: 10px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.female-list {
+}
+
+.female-item {
+  padding: 10px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.click-backgroud button {
+  background-color: #dedede;
+}
