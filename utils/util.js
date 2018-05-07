@@ -1,6 +1,4 @@
 import config from './config/config.js';
-
-
 import { myStore } from './tools/store';
 import { tools } from './tools/tools';
 
@@ -32,6 +30,7 @@ function formatNumber(n) {
 
 //格式化时间
 function formatDateTime(date, fmt) {
+  var date = new Date(date)
   var o = {
     "M+": date.getMonth() + 1, //月份 
     "d+": date.getDate(), //日 
@@ -52,6 +51,34 @@ function formatDateTime(date, fmt) {
   return fmt;
 }
 
+//获取时间差
+function getDateDifference(time) {
+  let sDate = new Date(time); //开始时间
+  let eDate = new Date(); //结束时间
+
+  let sTime = sDate.getTime();
+  let eTime = eDate.getTime();
+
+  let diffTime = eTime - sTime;
+
+  let secondDiff = parseInt(diffTime / 1000);
+  let minuteDiff = parseInt(diffTime / (1000 * 60));
+  let hourDiff = parseInt(diffTime / (1000 * 3600));
+  let dayDiff = parseInt(diffTime / (1000 * 3600 * 24));
+
+  let result = "未知";
+  if (dayDiff > 0) {
+    result = dayDiff + "天"
+  } else if (hourDiff > 0) {
+    result = hourDiff + "小时"
+  } else if (minuteDiff > 0) {
+    result = minuteDiff + "分钟"
+  } else if (secondDiff > 0) {
+    result = secondDiff + "秒"
+  }
+  return result;
+}
+
 //设置默认图片
 function getUserDefaultImg(img) {
   if (!img) {
@@ -66,7 +93,12 @@ function getUserCommonImg() {
 
 //设置图片网络路径
 function getImgPath(value) {
-  return config.GLOBAL_HOST + 'http://statics.zhuishushenqi.com' + value;
+  return config.GLOBAL_NET_IMAGE + value;
+}
+
+//把 value 四舍五入为指定 num 位数的数字
+function formatNum(value, num) {
+  return value.toFixed(num)
 }
 
 //计算距离 纬度 经度 返回单位米
@@ -200,6 +232,8 @@ module.exports = {
   getUserDefaultImg: getUserDefaultImg,
   getUserCommonImg: getUserCommonImg,
   getImgPath: getImgPath,
+  formatNum: formatNum,
+  getDateDifference: getDateDifference,
   calcDistance: calcDistance,
   transformLength: transformLength,
   htmlDecode: htmlDecode,

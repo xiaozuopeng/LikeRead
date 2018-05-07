@@ -1,6 +1,4 @@
-// pages/detail/bookdetail.js
-import MyHttp from '../../utils/config/wxrequest.js'
-import myUtils from '../../utils/util.js'
+import Api from '../../../utils/config/api.js'
 
 Page({
 
@@ -8,34 +6,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bookId: '',
-    bookDetail: null
+    isHidden: true,
+    rankingCategory: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let bookId = options.bookId
-    this.setData({
-      bookId: bookId
-    });
-    this.getBookDetail();
+    this.getRankingData();
   },
 
   /**
-   * 获取书籍详情
+   * 获取排行分类数据
    */
-  getBookDetail: function () {
-    let _id = this.data.bookId;
-    new MyHttp({}, 'GET', 'book/' + _id).then((res) => {
+  getRankingData: function () {
+    Api.getRankingCategory().then((res) => {
       if (res.statusCode == 200 && res.data != null) {
         wx.hideToast();
         let _data = res.data;
-        _data.cover = myUtils.getImgPath(_data.cover);
-        console.log(_data)
+        // console.log(_data)
         this.setData({
-          bookDetail: _data
+          rankingCategory: _data,
+          isHidden: false
         });
       }
       else {
@@ -76,7 +69,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getRankingData();
   },
 
   /**

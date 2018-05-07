@@ -1,0 +1,31 @@
+<view class='container page-body'>
+  <view style='padding: 10px;background: #c7edcc;' hidden='{{isHiddenContent}}'>
+    <scroll-view scroll-y="true">
+      <view class='title'>{{chapterContent.title}}</view>
+      <view class='content'>
+        <text>{{chapterContent.body}}</text>
+      </view>
+      <view class='footer-btn'>
+        <button class='pre-btn' disabled='{{isPreDisable}}' bindtap='previousChapter'>上一章</button>
+        <button class='catalogue-btn' bindtap='catalogue'>目录</button>
+        <button class='next-btn' disabled='{{isNextDisable}}' bindtap='nextChapter'>下一章</button>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<view class='chapter-list' hidden='{{isChaptersHidden}}' catchtouchmove='touchChapters'>
+  <view class='chapter-list_header'>
+    <text>目录（共{{chaptersData.chapters.length}}章）</text>
+  </view>
+
+  <scroll-view scroll-y="true">
+    <view wx:for="{{chaptersData.chapters}}" wx:for-item="chapterItem" wx:key="index">
+      <view class="chapter-item">{{chapterItem.title}}</view>
+    </view>
+  </scroll-view>
+
+  <view class='chapter-list_footer'>
+    <button bindtap="closeChapters">关闭</button>
+  </view>
+</view>

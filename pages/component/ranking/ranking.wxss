@@ -20,7 +20,3 @@
   padding: 10px;
   border-bottom: 1px solid #f3f3f3;
 }
-
-.click-backgroud button {
-  background-color: #dedede;
-}

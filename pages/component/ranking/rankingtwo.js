@@ -1,5 +1,5 @@
-// pages/ranking/ranking.js
-import Api from '../../utils/config/api.js'
+import MyHttp from '../../../utils/config/wxrequest.js'
+import myUtils from '../../../utils/util.js'
 
 Page({
 
@@ -7,27 +7,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rankingCategory: null
+    isHidden: true,
+    rinkingId: '',
+    rankingList: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let rankingId = options.rankingId
+    this.setData({
+      rinkingId: rankingId
+    });
     this.getRankingData();
   },
-  
+
   /**
-   * 获取排行分类数据
+   * 获取排行列表数据
    */
   getRankingData: function () {
-    Api.getRankingCategory().then((res) => {
+    let _id = this.data.rinkingId;
+    new MyHttp({}, 'GET', 'ranking/' + _id).then((res) => {
       if (res.statusCode == 200 && res.data != null) {
         wx.hideToast();
-        let _data = res.data;
-        console.log(_data)
+        let _data = res.data.ranking.books;
+        _data.forEach(function (value, index, array) {
+          value.cover = myUtils.getImgPath(value.cover);
+        });
+        // console.log(_data)
         this.setData({
-          rankingCategory: _data
+          rankingList: _data,
+          isHidden: false
         });
       }
       else {
@@ -69,6 +80,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.getRankingData();
+
   },
 
   /**

@@ -10,6 +10,10 @@ const ALL_API = {
   getRankingList: { //获取排行榜列表
     method: 'GET',
     url: 'rank'
+  },
+  getCommentList: { //获取热门书评列表
+    method: 'GET',
+    url: 'post/review/best-by-book'
   }
 }
 

@@ -1,0 +1,71 @@
+.page-body {
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+}
+
+.title {
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  font-size: 38rpx;
+}
+
+.content {
+  margin-top: 10px;
+  font-size: 34rpx;
+}
+
+.footer-btn {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pre-btn {
+  flex: 1;
+}
+
+.catalogue-btn {
+  flex: 1;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.next-btn {
+  flex: 1;
+}
+
+.chapter-list {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  background: white;
+  opacity: 0.9;
+}
+
+.chapter-list_header{
+  padding: 10px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.chapter-item {
+  padding: 10px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.chapter-list_footer {
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  opacity: 0.9;
+  justify-content: space-between;
+  align-items: center;
+}

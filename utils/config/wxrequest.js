@@ -79,9 +79,12 @@ function extend(obj) {
 }
 
 
-function MyHttp(defaultParams, method, url) {
+function MyHttp(defaultParams, method, url, host) {
 
   let _build_url = GLOBAL_API_DOMAIN;
+  if (host) {
+    _build_url = host
+  }
 
   let _params_data = extend({}, defaultParams);
   return sendRrquest(_build_url + url, method, _params_data, {

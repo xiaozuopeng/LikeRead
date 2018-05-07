@@ -1,0 +1,20 @@
+<view class="page-body" hidden='{{isHidden}}'>
+  <view class="book-list" wx:for="{{bookList}}" wx:for-item="bookItem" wx:key="index">
+    <navigator url="../readbook/readbook?bookId={{bookItem._id}}">
+      <view class="book-item">
+        <image class='cover-img' src='{{bookItem.cover}}' mode='scaleToFill'></image>
+        <view class='right-content'>
+          <view>
+            <text class='title'>{{bookItem.title}}</text>
+          </view>
+          <view>
+            <text class='desc'>{{bookItem.longIntro}}</text>
+          </view>
+          <view>
+            <text class='chapter'>最新章节：{{bookItem.lastChapter}}</text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>
