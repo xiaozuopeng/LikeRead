@@ -12,6 +12,37 @@ Page({
     bookList: null
   },
 
+  longTapItem: function (e) {
+    let that = this;
+    let bookId = e.currentTarget.id;
+    wx.showModal({
+      title: '提示',
+      content: '是否删除该小说？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          let _books = wx.getStorageSync('myBooks') || [];
+          console.log(bookId, _books)
+          if (_books && _books.length > 0) {
+            _books.forEach(function (value, index, array) {
+              if (value._id == bookId) {
+                _books.splice(index, 1);
+                wx.removeStorageSync(bookId + 'index')
+              }
+            });
+          }
+          wx.setStorageSync('myBooks', _books);
+          that.setData({
+            bookList: _books
+          });
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -19,7 +50,7 @@ Page({
     this.getMyBookList();
   },
 
-  getMyBookList:function(){
+  getMyBookList: function () {
     let books = wx.getStorageSync('myBooks') || [];
     this.setData({
       bookList: books

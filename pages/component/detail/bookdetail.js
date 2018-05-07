@@ -28,19 +28,17 @@ Page({
       _books.forEach(function (value, index, array) {
 
         if (value._id == bookId) {
-          console.log(index, '0000000000', value)
           isSaved = false;
           _books.splice(index, 1);
+          wx.removeStorageSync(bookId + 'index')
           return true;//break
         } else {
-          console.log(index, '11111111', bookDetail)
           _books.unshift(bookDetail);
           isSaved = true;
         }
       });
 
     } else {
-      console.log('22222222222', bookDetail)
       _books.unshift(bookDetail);
       isSaved = true;
     }

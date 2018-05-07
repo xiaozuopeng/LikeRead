@@ -1,7 +1,7 @@
 <view class="page-body" hidden='{{isHidden}}'>
   <view class="book-list" wx:for="{{bookList}}" wx:for-item="bookItem" wx:key="index">
     <navigator url="../readbook/readbook?bookId={{bookItem._id}}">
-      <view class="book-item">
+      <view class="book-item" bindlongpress='longTapItem' id='{{bookItem._id}}'>
         <image class='cover-img' src='{{bookItem.cover}}' mode='scaleToFill'></image>
         <view class='right-content'>
           <view>
