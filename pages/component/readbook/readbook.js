@@ -39,7 +39,7 @@ Page({
     });
   },
 
-  touchChapters:function(){
+  touchChapters: function () {
 
   },
 
@@ -59,6 +59,17 @@ Page({
       chapterIndex: _chapterIndex + 1,
       isPreDisable: _chapterIndex + 1 > 0 ? false : true,
       isNextDisable: _chapterIndex + 1 < chapters.length - 1 ? false : true
+    });
+
+    this.getChapterDetail();
+  },
+
+  clickChapterItem: function (e) {
+    let index = parseInt(e.currentTarget.id);
+    wx.setStorageSync(this.data.bookId + 'index', index);
+    this.setData({
+      chapterIndex: index,
+      isChaptersHidden: true
     });
 
     this.getChapterDetail();
@@ -102,6 +113,7 @@ Page({
     })
   },
 
+  //获取章节内容
   getChapterDetail: function () {
     let chapterIndex = this.data.chapterIndex;
     let chapters = this.data.chaptersData.chapters;
