@@ -1,8 +1,8 @@
 <view class='container page-body'>
-  <view style='padding: 10px;background: #c7edcc;' hidden='{{isHiddenContent}}'>
+  <view style='padding: 10px;background: {{contentBackground}};' hidden='{{isHiddenContent}}' bindtap="showModal">
     <scroll-view scroll-y="true">
-      <view class='title'>{{chapterContent.title}}</view>
-      <view class='content'>
+      <view class='title' style='font-size:{{contentFontSize}}rpx'>{{chapterContent.title}}</view>
+      <view class='content' style='font-size:{{contentFontSize}}rpx'>
         <text>{{chapterContent.body}}</text>
       </view>
       <view class='footer-btn'>
@@ -11,6 +11,26 @@
         <button class='next-btn' disabled='{{isNextDisable}}' bindtap='nextChapter'>下一章</button>
       </view>
     </scroll-view>
+  </view>
+</view>
+
+<!--屏幕背景变暗的背景 -->
+<view class="commodity-screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="action-box" wx:if="{{showModalStatus}}">
+  <view class='action-box_btn'>
+    <button class='pre-btn' bindtap='fontAddition'>A+</button>
+    <view class='space-view'></view>
+    <button class='next-btn' bindtap='fontSubtraction'>A-</button>
+  </view>
+  <view class='action-box_btn'>
+    <button class='pre-btn' bindtap='standardColors'>标准色</button>
+    <view class='space-view'></view>
+    <button class='next-btn' bindtap='protectiveEyeColor'>护眼色</button>
+  </view>
+  <view class='action-box_btn'>
+    <button class='pre-btn' disabled='{{isPreDisable}}' bindtap='previousChapter'>上一章</button>
+    <button class='catalogue-btn' bindtap='catalogue'>目录</button>
+    <button class='next-btn' disabled='{{isNextDisable}}' bindtap='nextChapter'>下一章</button>
   </view>
 </view>
 

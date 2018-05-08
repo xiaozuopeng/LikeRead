@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    contentFontSize: 36,
+    contentBackground: '#c7edcc',
+    showModalStatus: false,
     isChaptersHidden: true,
     isPreDisable: true,
     isNextDisable: false,
@@ -18,8 +21,90 @@ Page({
     chapterContent: ""
   },
 
+  //显示操作栏
+  showModal: function () {
+    if (this.data.isChaptersHidden == false) {
+      return;
+    }
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(200).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 50)
+  },
+
+  //隐藏操作栏
+  hideModal: function () {
+    // 隐藏遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(200).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      })
+    }.bind(this), 50)
+  },
+
+  //字体加
+  fontAddition: function () {
+    let fontSize = this.data.contentFontSize + 2 < 50 ? this.data.contentFontSize + 2 : 50;
+    wx.setStorageSync('font-size', fontSize)
+    this.setData({
+      contentFontSize: fontSize
+    })
+  },
+
+  //字体减
+  fontSubtraction: function () {
+    let fontSize = this.data.contentFontSize - 2 > 24 ? this.data.contentFontSize - 2 : 24;
+    wx.setStorageSync('font-size', fontSize)
+    this.setData({
+      contentFontSize: fontSize
+    })
+  },
+
+  //标准色
+  standardColors: function () {
+    wx.setStorageSync('font-color', '#ffffff')
+    this.setData({
+      contentBackground: '#ffffff'
+    })
+  },
+
+  //护眼色
+  protectiveEyeColor: function () {
+    wx.setStorageSync('font-color', '#c7edcc')
+    this.setData({
+      contentBackground: '#c7edcc'
+    })
+  },
+
   //上一章
   previousChapter: function () {
+    this.hideModal();
     let chapters = this.data.chaptersData.chapters;
     let _chapterIndex = this.data.chapterIndex;
     wx.setStorageSync(this.data.bookId + 'index', _chapterIndex - 1)
@@ -34,6 +119,7 @@ Page({
 
   //目录
   catalogue: function () {
+    this.hideModal();
     this.setData({
       isChaptersHidden: false
     });
@@ -52,6 +138,7 @@ Page({
 
   //下一章
   nextChapter: function () {
+    this.hideModal();
     let chapters = this.data.chaptersData.chapters;
     let _chapterIndex = this.data.chapterIndex;
     wx.setStorageSync(this.data.bookId + 'index', _chapterIndex + 1)
@@ -64,6 +151,7 @@ Page({
     this.getChapterDetail();
   },
 
+  //点击章节条目
   clickChapterItem: function (e) {
     let index = parseInt(e.currentTarget.id);
     wx.setStorageSync(this.data.bookId + 'index', index);
@@ -79,11 +167,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let fontSize = wx.getStorageSync('font-size');
+    let fontColor = wx.getStorageSync('font-color');
     let bookId = options.bookId;
     let _chapterIndex = wx.getStorageSync(bookId + 'index') || 0;
-    console.log(_chapterIndex)
     this.setData({
       bookId: bookId,
+      contentBackground: fontColor,
+      contentFontSize: fontSize,
       chapterIndex: _chapterIndex,
       isPreDisable: _chapterIndex > 0 ? false : true
     });
