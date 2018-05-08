@@ -6,7 +6,7 @@
     "pages/component/classify/classify",
     "pages/component/more/more",
     "pages/component/ranking/rankingtwo",
-    "pages/component/detail/bookdetail",
+    "pages/component/bookdetail/bookdetail",
     "pages/component/readbook/readbook"
   ],
   "window": {

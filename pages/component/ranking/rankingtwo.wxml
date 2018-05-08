@@ -1,5 +1,5 @@
 <view class="ranking-list" wx:for="{{rankingList}}" wx:for-item="rankingItem" wx:key="index" hidden='{{isHidden}}'>
-  <navigator url="../detail/bookdetail?bookId={{rankingItem._id}}">
+  <navigator url="../bookdetail/bookdetail?bookId={{rankingItem._id}}">
     <view class="ranking-item">
       <view class='left-content'>
         <image class='cover-img' src='{{rankingItem.cover}}' mode='scaleToFill'></image>
