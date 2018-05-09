@@ -47,14 +47,50 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMyBookList();
+    // this.getMyBookList();
   },
 
   getMyBookList: function () {
+    let that = this;
     let books = wx.getStorageSync('myBooks') || [];
+    books.forEach(function (value, index, array) {
+      that.getBookUpdate(array, value);
+    });
     this.setData({
       bookList: books
     });
+  },
+
+  getBookUpdate: function (array, value) {
+    console.log(array)
+    let bookId = value._id;
+    let parmas = {
+      view: 'summary',
+      book: bookId
+    };
+    Api.getBookUpdate(parmas).then((res) => {
+      if (res.statusCode == 200 && res.data != null) {
+        wx.hideToast();
+        let _data = res.data;
+        console.log(_data[0].lastChapter)
+        array.forEach(function (value, index, arr) {
+          if (value._id == bookId) {
+            value.lastChapter = _data[0].lastChapter
+          }
+        });
+        this.setData({
+          bookList: array
+        });
+        // wx.setStorageSync('myBooks', array);
+        wx.setStorage({
+          key: 'myBooks',
+          data: array,
+        });
+      }
+      else {
+        res.data && res.data.msg && utils.toast("error", res.data.msg);
+      }
+    })
   },
 
   /**

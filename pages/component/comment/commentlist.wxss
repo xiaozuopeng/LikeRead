@@ -1,0 +1,23 @@
+.book-comment-item {
+  padding: 10px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.comment-item_top {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-item_img {
+  width: 40px;
+  height: 40px;
+}
+
+.comment-content {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

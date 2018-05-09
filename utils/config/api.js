@@ -14,6 +14,10 @@ const ALL_API = {
   getCommentList: { //获取热门书评列表
     method: 'GET',
     url: 'post/review/best-by-book'
+  },
+  getBookUpdate: {
+    method: 'GET',
+    url: 'btoc'
   }
 }
 

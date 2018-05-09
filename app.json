@@ -7,7 +7,9 @@
     "pages/component/more/more",
     "pages/component/ranking/rankingtwo",
     "pages/component/bookdetail/bookdetail",
-    "pages/component/readbook/readbook"
+    "pages/component/readbook/readbook",
+    "pages/component/comment/commentlist",
+    "pages/component/comment/commentdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

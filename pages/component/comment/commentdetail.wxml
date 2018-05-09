@@ -1,0 +1,63 @@
+<view hidden='{{isHidden}}'>
+  <scroll-view scroll-y="true" bindscrolltolower='scrollToBottom' style='height:{{winHeight}}px'>
+    <view style='padding:14px'>
+      <view class='comment-item_top'>
+        <image class='comment-item_img' src='{{commentDetail.author.avatar}}'></image>
+        <view style='margin-left:10px;flex:1'>
+          <view style='font-size:28rpx;color:goldenrod;'>{{commentDetail.author.nickname}}</view>
+          <view style='font-size:24rpx'>{{commentDetail.updated}}前</view>
+        </view>
+        <view style='margin-left:10px;display:flex;align-items:center;'>
+          <view style='color:red;font-size:30rpx;'>{{commentDetail.rating}}颗星</view>
+        </view>
+      </view>
+      <view style='margin-top:10px'>
+        <view style='font-size:28rpx'>{{commentDetail.title}}</view>
+        <view class='comment-content'>{{commentDetail.content}}</view>
+      </view>
+    </view>
+    <view style='display:flex;justify-content:center;margin:20px;'>
+      <image src='../../../images/icon_praise.png' class='praise-img'></image>
+      <text class='praise-text' style='margin-right:20px'>{{commentDetail.helpful.yes}} 赞</text>
+      <image src='../../../images/icon_trample.png' class='praise-img'></image>
+      <text class='praise-text'>{{commentDetail.helpful.no}} 踩</text>
+    </view>
+
+    <view class='space-title'>仰望神评论</view>
+    <block wx:for="{{commentBest}}" wx:for-item="commentBestItem" wx:key="{{commentBestItem._id}}">
+      <view class='comment-item'>
+        <image class='comment-item_img' src='{{commentBestItem.author.avatar}}'></image>
+        <view style='margin-left:10px;flex:1'>
+          <view class='comment-item_top' style='font-size:28rpx;'>
+            <text style='color:gray;margin-right:6px'>{{commentBestItem.floor}}楼 </text>
+            <text style='color:goldenrod;flex:1'>{{commentBestItem.author.nickname}}</text>
+            <view>
+              <image src='../../../images/icon_like.png' style='height:12px;width:12px;margin-right:4px;'></image>
+              <text style='color:gray;'>{{commentBestItem.likeCount}}</text>
+            </view>
+          </view>
+          <view style='font-size:24rpx'>{{commentBestItem.content}}</view>
+        </view>
+      </view>
+    </block>
+
+    <view class='space-title'>共{{commentDetail.commentCount}}评论</view>
+    <block wx:for="{{totalComments}}" wx:for-item="commentItem" wx:key="{{commentItem._id}}">
+      <view class='comment-item'>
+        <image class='comment-item_img' src='{{commentItem.author.avatar}}'></image>
+        <view style='margin-left:10px;flex:1'>
+          <view class='comment-item_top' style='font-size:28rpx;'>
+            <text style='color:gray;margin-right:6px'>{{commentItem.floor}}楼 </text>
+            <text style='color:goldenrod;flex:1'>{{commentItem.author.nickname}}</text>
+            <text style='color:gray;'>{{commentItem.created}}前</text>
+          </view>
+          <view style='font-size:24rpx'>{{commentItem.content}}</view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="weui-loadmore" hidden='isLoadMore'>
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+</view>

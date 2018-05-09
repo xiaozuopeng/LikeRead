@@ -96,13 +96,13 @@
   flex-direction: column;
 }
 
-.action-box_btn{
+.action-box_btn {
   margin: 10px;
   display: flex;
   flex-direction: row;
 }
 
-.space-view{
+.space-view {
   margin-left: 20px;
   margin-right: 20px;
 }

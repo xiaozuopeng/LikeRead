@@ -1,0 +1,25 @@
+<view hidden='{{isHidden}}'>
+  <scroll-view scroll-y="true" bindscrolltolower='scrollToBottom' style='height:{{winHeight}}px'>
+    <view wx:for="{{commentList}}" wx:for-item="commentItem" wx:key="{{commentItem._id}}">
+      <navigator url="../comment/commentdetail?commentId={{commentItem._id}}">
+        <view class='book-comment-item'>
+          <view class='comment-item_top'>
+            <image class='comment-item_img' src='{{commentItem.author.avatar}}'></image>
+            <view style='margin-left:10px;flex:1'>
+              <view style='font-size:28rpx'>{{commentItem.author.nickname}}</view>
+              <view style='font-size:24rpx'>{{commentItem.updated}}前</view>
+            </view>
+            <view style='margin-left:10px'>
+              <view style='font-size:28rpx;color:coral'>*****</view>
+              <view style='font-size:24rpx'>{{commentItem.helpful.total}}人觉得有用</view>
+            </view>
+          </view>
+          <view style='margin-top:10px'>
+            <view style='font-size:28rpx'>{{commentItem.title}}</view>
+            <view class='comment-content'>{{commentItem.content}}</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </scroll-view>
+</view>

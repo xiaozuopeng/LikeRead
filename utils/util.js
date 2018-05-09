@@ -65,9 +65,15 @@ function getDateDifference(time) {
   let minuteDiff = parseInt(diffTime / (1000 * 60));
   let hourDiff = parseInt(diffTime / (1000 * 3600));
   let dayDiff = parseInt(diffTime / (1000 * 3600 * 24));
+  let monthDiff = parseInt(diffTime / (1000 * 3600 * 24 * 30));
+  let yearDiff = parseInt(diffTime / (1000 * 3600 * 24 * 365));
 
   let result = "未知";
-  if (dayDiff > 0) {
+  if (yearDiff > 0) {
+    result = yearDiff + "年"
+  } else if (monthDiff > 0) {
+    result = monthDiff + "月"
+  } else if (dayDiff > 0) {
     result = dayDiff + "天"
   } else if (hourDiff > 0) {
     result = hourDiff + "小时"

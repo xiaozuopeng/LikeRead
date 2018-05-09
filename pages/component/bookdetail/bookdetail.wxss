@@ -99,7 +99,6 @@
 .comment-item_img {
   width: 40px;
   height: 40px;
-  background: coral;
 }
 
 .comment-content {

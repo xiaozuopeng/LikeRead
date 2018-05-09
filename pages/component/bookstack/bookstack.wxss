@@ -30,12 +30,13 @@
 }
 
 .title {
-  font-size: 36rpx;
+  font-size: 38rpx;
+  font-weight: 500;
 }
 
 .desc {
   font-size: 28rpx;
-  color: #333;
+  color: #666;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -46,5 +47,10 @@
 .chapter {
   font-size: 28rpx;
   margin-top: 4px;
-  color: #333;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }

@@ -3,7 +3,7 @@
     <scroll-view scroll-y="true">
       <view class='title' style='font-size:{{contentFontSize}}rpx'>{{chapterContent.title}}</view>
       <view class='content' style='font-size:{{contentFontSize}}rpx'>
-        <text>{{chapterContent.body}}</text>
+        <text style='word-break: break-all'>{{chapterContent.body}}</text>
       </view>
       <view class='footer-btn'>
         <button class='pre-btn' disabled='{{isPreDisable}}' bindtap='previousChapter'>上一章</button>
@@ -39,10 +39,10 @@
     <text>目录（共{{chaptersData.chapters.length}}章）</text>
   </view>
 
-  <scroll-view scroll-y="true" style='margin-bottom:80px'>
-    <view wx:for="{{chaptersData.chapters}}" wx:for-item="chapterItem" wx:key="index">
+  <scroll-view scroll-y="true" style='margin-bottom:80px' scroll-with-animation='true'>
+    <block wx:for="{{chaptersData.chapters}}" wx:for-item="chapterItem" wx:key="index">
       <view class="chapter-item" id='{{index}}' bindtap='clickChapterItem'>{{chapterItem.title}}</view>
-    </view>
+    </block>
   </scroll-view>
 
   <view class='chapter-list_footer'>
