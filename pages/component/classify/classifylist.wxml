@@ -1,0 +1,28 @@
+<scroll-view scroll-y="true" bindscrolltolower='scrollToBottom' style='height:{{winHeight}}px'>
+  <view class="classify-list" wx:for="{{classifyList}}" wx:for-item="classifyItem" wx:key="index" hidden='{{isHidden}}'>
+    <navigator url="../bookdetail/bookdetail?bookId={{classifyItem._id}}">
+      <view class="classify-item">
+        <view class='left-content'>
+          <image class='cover-img' src='{{classifyItem.cover}}' mode='scaleToFill'></image>
+        </view>
+        <view class='right-content'>
+          <view>
+            <text class='title'>{{classifyItem.title}}</text>
+          </view>
+          <view>
+            <text class='author'>{{classifyItem.author}}</text>
+          </view>
+          <view>
+            <text class='desc'>{{classifyItem.shortIntro}}</text>
+          </view>
+          <view class='data-num'>
+            <text class='like'>{{classifyItem.latelyFollower}}</text>
+            <text>人气</text>
+            <text class='retentionRatio'>{{classifyItem.retentionRatio}}%</text>
+            <text>读者留存</text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</scroll-view>

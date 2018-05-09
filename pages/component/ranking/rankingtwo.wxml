@@ -17,8 +17,7 @@
         <view class='data-num'>
           <text class='like'>{{rankingItem.latelyFollower}}</text>
           <text>人气</text>
-          <text class='retentionRatio'>{{rankingItem.retentionRatio}}</text>
-          <text class='percent'>%</text>
+          <text class='retentionRatio'>{{rankingItem.retentionRatio}}%</text>
           <text>读者留存</text>
         </view>
       </view>

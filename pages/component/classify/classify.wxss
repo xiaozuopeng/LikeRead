@@ -1,1 +1,5 @@
-/* pages/classify/classify.wxss */
+.header {
+  background: #f3f3f3;
+  padding: 10px;
+  text-align: center;
+}

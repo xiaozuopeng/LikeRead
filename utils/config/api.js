@@ -15,9 +15,17 @@ const ALL_API = {
     method: 'GET',
     url: 'post/review/best-by-book'
   },
-  getBookUpdate: {
+  getBookUpdate: {//获取书籍更新
     method: 'GET',
     url: 'btoc'
+  },
+  getClassifies: {//获取分类列表
+    method: 'GET',
+    url: 'cats/lv2/statistics'
+  },
+  getClassifyList: {//获取子分类列表
+    method: 'GET',
+    url: 'book/by-categories'
   }
 }
 

@@ -1,5 +1,3 @@
-/* pages/ranking/ranking.wxss */
-
 .header {
   background: #f3f3f3;
   padding: 10px;

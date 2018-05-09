@@ -9,7 +9,8 @@
     "pages/component/bookdetail/bookdetail",
     "pages/component/readbook/readbook",
     "pages/component/comment/commentlist",
-    "pages/component/comment/commentdetail"
+    "pages/component/comment/commentdetail",
+    "pages/component/classify/classifylist"
   ],
   "window": {
     "backgroundTextStyle": "light",

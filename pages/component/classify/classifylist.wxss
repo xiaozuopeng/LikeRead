@@ -1,9 +1,9 @@
-.ranking-list {
+.classify-list {
   width: 100%;
 }
 
-.ranking-item {
-  height: 130px;
+.classify-item {
+  height: 120px;
   padding: 10px;
   border-bottom: 1px solid #f3f3f3;
   display: flex;
@@ -13,8 +13,8 @@
 }
 
 .cover-img {
-  width: 80px;
-  height: 110px;
+  width: 70px;
+  height: 100px;
 }
 
 .right-content {
@@ -27,18 +27,20 @@
 }
 
 .title {
-  font-size: 32rpx;
+  font-size: 34rpx;
+  font-weight: 400;
 }
 
 .author {
   font-size: 28rpx;
   margin-top: 4px;
-  color: #333;
+  color: gray;
 }
 
 .desc {
   font-size: 28rpx;
   overflow: hidden;
+  color: gray;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -47,7 +49,7 @@
 
 .data-num {
   color: #333;
-  font-size: 28rpx;
+  font-size: 22rpx;
   margin-top: 4px;
   display: flex;
   flex-direction: row;
@@ -58,7 +60,7 @@
 }
 
 .retentionRatio {
-  margin-left: 20px;
+  margin-left: 22px;
   padding-left: 20px;
   border-left: 1px solid #333;
   color: #f00;

@@ -1,4 +1,3 @@
-<!--pages/ranking/ranking.wxml-->
 <view class="container ranking-list" hidden='{{isHidden}}'>
   <text class='header'>男生</text>
   <view class="male-list" wx:for="{{rankingCategory.male}}" wx:for-item="maleItem" wx:key="{{maleItem._id}}">
