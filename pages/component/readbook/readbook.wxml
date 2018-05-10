@@ -37,10 +37,17 @@
 <view class='chapter-list' hidden='{{isChaptersHidden}}' catchtouchmove='touchChapters'>
   <view class='chapter-list_header'>
     <text>目录（共{{chaptersData.chapters.length}}章）</text>
+    <view class='chapter-choose_text' bindtap='chooseChapter'>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{pageInfos}}">
+          <view class="weui-input">{{pageInfos[index]}}</view>
+        </picker>
+      </view>
+      <image class='cover-img' src='../../../images/icon_down.png' mode='scaleToFill'></image>
+    </view>
   </view>
-
-  <scroll-view scroll-y="true" style='margin-bottom:80px' scroll-with-animation='true'>
-    <block wx:for="{{chaptersData.chapters}}" wx:for-item="chapterItem" wx:key="index">
+  <scroll-view scroll-y="true" style='height:{{winHeight}}px' scroll-with-animation='true'>
+    <block wx:for="{{chapters}}" wx:for-item="chapterItem" wx:key="index">
       <view class="chapter-item" id='{{index}}' bindtap='clickChapterItem'>{{chapterItem.title}}</view>
     </block>
   </scroll-view>

@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // pageInfo: '',
+    pageInfos: [],
+    winHeight: 0,
     contentFontSize: 36,
     contentBackground: '#c7edcc',
     showModalStatus: false,
@@ -18,6 +21,8 @@ Page({
     isHiddenContent: true,
     bookId: "",
     chaptersData: null,
+    index: 0,
+    chapters: null,
     chapterContent: ""
   },
 
@@ -167,6 +172,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getSystemInfo({
+      success: (res) => { // 用这种方法调用，this指向Page
+        this.setData({
+          winHeight: res.windowHeight - 66 - 52
+        });
+      }
+    });
     let fontSize = wx.getStorageSync('font-size');
     let fontColor = wx.getStorageSync('font-color');
     let bookId = options.bookId;
@@ -185,6 +197,7 @@ Page({
    * 获取章节列表数据
    */
   getChaptersData: function () {
+    let _pageInfos = [];
     let chapterIndex = this.data.chapterIndex;
     let _id = this.data.bookId;
     new MyHttp({}, 'GET', 'mix-atoc/' + _id + '?view=chapters').then((res) => {
@@ -192,9 +205,19 @@ Page({
         wx.hideToast();
         let _data = res.data.mixToc;
         // console.log(_data)
+
+        let length = _data.chapters.length / 100;
+
+        for (var i = 0; i < length; i++) {
+          _pageInfos.push(i * 100 + 1 + '~' + (i + 1) * 100);
+        }
+
         this.setData({
           isNextDisable: chapterIndex < _data.chapters.length - 1 ? false : true,
-          chaptersData: _data
+          chaptersData: _data,
+          chapters: _data.chapters.slice(0, 100),
+          pageInfos: _pageInfos,
+          // pageInfo: _pageInfos[0]
         });
         this.getChapterDetail();
       }
@@ -204,10 +227,23 @@ Page({
     })
   },
 
+  chooseChapter: function () {
+
+  },
+
+  bindPickerChange: function (e) {
+    let _index = parseInt(e.detail.value);
+    let chapters = this.data.chaptersData.chapters;
+    this.setData({
+      index: _index,
+      chapters: chapters.slice(_index * 100, (_index + 1) * 100)
+    })
+  },
+
   //获取章节内容
   getChapterDetail: function () {
     let chapterIndex = this.data.chapterIndex;
-    let chapters = this.data.chaptersData.chapters;
+    let chapters = this.data.chapters;
     let _link = encodeURIComponent(chapters[chapterIndex].link);
     new MyHttp({}, 'POST', 'chapter/' + _link, config.GLOBAL_CHAPTER_DOMAIN).then((res) => {
       if (res.statusCode == 200 && res.data != null) {

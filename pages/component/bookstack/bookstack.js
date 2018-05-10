@@ -62,7 +62,7 @@ Page({
   },
 
   getBookUpdate: function (array, value) {
-    console.log(array)
+    // console.log(array)
     let bookId = value._id;
     let parmas = {
       view: 'summary',
@@ -72,7 +72,7 @@ Page({
       if (res.statusCode == 200 && res.data != null) {
         wx.hideToast();
         let _data = res.data;
-        console.log(_data[0].lastChapter)
+        // console.log(_data[0].lastChapter)
         array.forEach(function (value, index, arr) {
           if (value._id == bookId) {
             value.lastChapter = _data[0].lastChapter

@@ -50,6 +50,30 @@
 .chapter-list_header {
   padding: 10px;
   border-bottom: 1px solid #e7e7e7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chapter-choose_text {
+  font-size: 30rpx;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid #e7e7e7;
+  display: flex;
+}
+
+.weui-input {
+  font-size: 30rpx;
+  height: 28px;
+  line-height: 28px;
+  min-height: 28px;
+}
+
+.cover-img {
+  height: 16px;
+  width: 16px;
+  margin-left: 2px;
+  margin-top: 4px;
 }
 
 .chapter-item {
