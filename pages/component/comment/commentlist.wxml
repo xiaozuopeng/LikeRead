@@ -4,7 +4,7 @@
       <navigator url="../comment/commentdetail?commentId={{commentItem._id}}">
         <view class='book-comment-item'>
           <view class='comment-item_top'>
-            <image class='comment-item_img' src='{{commentItem.author.avatar}}'></image>
+            <image class='comment-item_img' src='{{commentItem.author.avatar}}' background-size="cover"></image>
             <view style='margin-left:10px;flex:1'>
               <view style='font-size:28rpx'>{{commentItem.author.nickname}}</view>
               <view style='font-size:24rpx'>{{commentItem.updated}}前</view>

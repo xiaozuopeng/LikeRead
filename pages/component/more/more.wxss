@@ -1,1 +1,28 @@
-/* pages/more/more.wxss */
+.more-page {
+  padding: 20px;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.user-motto {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
