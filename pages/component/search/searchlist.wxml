@@ -1,0 +1,26 @@
+<view class="search-list" wx:for="{{searchList}}" wx:for-item="searchItem" wx:key="index" hidden='{{isHidden}}'>
+  <navigator url="../bookdetail/bookdetail?bookId={{searchItem._id}}">
+    <view class="search-item">
+      <view class='left-content'>
+        <image class='cover-img' src='{{searchItem.cover}}' mode='scaleToFill'></image>
+      </view>
+      <view class='right-content'>
+        <view>
+          <text class='title'>{{searchItem.title}}</text>
+        </view>
+        <view>
+          <text class='author'>{{searchItem.author}}</text>
+        </view>
+        <view>
+          <text class='desc'>{{searchItem.shortIntro}}</text>
+        </view>
+        <view class='data-num'>
+          <text class='like'>{{searchItem.latelyFollower?searchItem.latelyFollower:0}}</text>
+          <text>人气</text>
+          <text class='retentionRatio'>{{searchItem.retentionRatio?searchItem.retentionRatio:0}}%</text>
+          <text>读者留存</text>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>

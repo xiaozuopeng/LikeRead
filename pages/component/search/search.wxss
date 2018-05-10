@@ -1,1 +1,37 @@
-/* pages/search/search.wxss */
+.hot-search-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hot-search-item {
+  flex: 0 0 20%;
+  font-size: 28rpx;
+  text-align: center;
+  border: 1px solid #eee;
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.hot-search-header {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.hot-search-title {
+  display: block;
+  font-size: 30rpx;
+  flex: 1;
+}
+
+.img {
+  height: 18px;
+  width: 18px;
+}

@@ -99,8 +99,9 @@ Page({
       if (res.statusCode == 200 && res.data != null) {
         wx.hideToast();
         let _data = res.data;
+        // console.log(_data)
         _data.cover = myUtils.getImgPath(_data.cover);
-        _data.rating.score = myUtils.formatNum(_data.rating.score, 1);
+        _data.rating ? _data.rating.score = myUtils.formatNum(_data.rating.score, 1) : 0;
         _data.wordCount = myUtils.formatNum(_data.wordCount / 10000, 1);
         _data.updated = myUtils.getDateDifference(_data.updated);
         // console.log(_data)

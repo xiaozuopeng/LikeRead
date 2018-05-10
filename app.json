@@ -10,7 +10,8 @@
     "pages/component/readbook/readbook",
     "pages/component/comment/commentlist",
     "pages/component/comment/commentdetail",
-    "pages/component/classify/classifylist"
+    "pages/component/classify/classifylist",
+    "pages/component/search/searchlist"
   ],
   "window": {
     "backgroundTextStyle": "light",

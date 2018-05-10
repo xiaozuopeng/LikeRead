@@ -26,6 +26,14 @@ const ALL_API = {
   getClassifyList: {//获取子分类列表
     method: 'GET',
     url: 'book/by-categories'
+  },
+  getHotKeys: {//获取热门关键字
+    method: 'GET',
+    url: 'book/hot-word'
+  },
+  getSearchList: {//关键字搜索
+    method: 'GET',
+    url: 'book/fuzzy-search'
   }
 }
 

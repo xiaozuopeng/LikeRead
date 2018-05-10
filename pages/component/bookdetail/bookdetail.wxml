@@ -9,8 +9,8 @@
               <text>{{bookDetail.title}}</text>
             </view>
             <view style='display:flex;margin-top:6px'>
-              <text style='color: orange;font-size:28rpx;margin-right:10px'>{{bookDetail.rating.score}}</text>
-              <text class='right-gray-text' style='font-size:28rpx'>{{bookDetail.rating.count}}人评</text>
+              <text style='color: orange;font-size:28rpx;margin-right:10px'>{{bookDetail.rating?bookDetail.rating.score:0}}分</text>
+              <text class='right-gray-text' style='font-size:28rpx'>{{bookDetail.rating?bookDetail.rating.count:0}}人评</text>
             </view>
             <view style='display:flex;margin-top:6px'>
               <text style='color:red;font-size:24rpx;margin-right:10px'>{{bookDetail.author}}</text>
