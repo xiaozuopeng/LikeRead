@@ -18,6 +18,14 @@ Page({
     recommendList: null
   },
 
+  clickRecomment: function (e) {
+    this.setData({
+      bookId: e.currentTarget.id
+    });
+    this.getBookDetail();
+    this.getRecommendList();
+  },
+
   saveBook: function () {
     let bookId = this.data.bookId;
     let bookDetail = this.data.bookDetail;
@@ -110,11 +118,16 @@ Page({
           bookDetail: _data,
           isHidden: false
         });
+
+        wx.pageScrollTo({
+          scrollTop: 0,
+          duration: 0
+        })
       }
       else {
         res.data && res.data.msg && utils.toast("error", res.data.msg);
       }
-    })
+    });
   },
 
   getCommentList: function (bookId) {

@@ -9,6 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    winHeight: 0,
+    isHidden: true,
+    isAddHidden: false,
     bookList: null
   },
 
@@ -33,7 +36,9 @@ Page({
           }
           wx.setStorageSync('myBooks', _books);
           that.setData({
-            bookList: _books
+            bookList: _books,
+            isHidden: _books.length > 0 ? false : true,
+            isAddHidden: _books.length > 0 ? true : false
           });
 
         } else if (res.cancel) {
@@ -43,10 +48,23 @@ Page({
     })
   },
 
+  clickAdd: function () {
+    wx.switchTab({
+      url: '../../../../../ranking/ranking',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getSystemInfo({
+      success: (res) => { // 用这种方法调用，this指向Page
+        this.setData({
+          winHeight: res.windowHeight
+        });
+      }
+    });
     // this.getMyBookList();
   },
 
@@ -56,9 +74,13 @@ Page({
     books.forEach(function (value, index, array) {
       that.getBookUpdate(array, value);
     });
-    this.setData({
-      bookList: books
-    });
+    if (books && books.length > 0) {
+      this.setData({
+        bookList: books,
+        isHidden: false,
+        isAddHidden: true
+      });
+    }
   },
 
   getBookUpdate: function (array, value) {

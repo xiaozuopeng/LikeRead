@@ -54,3 +54,42 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
+
+.add-item {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  padding: 10px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.add-img {
+  width: 30px;
+  height: 30px;
+}
+
+.add-text {
+  margin-left: 10px;
+  color: gray;
+  margin-top: 2px;
+}
+
+.add-content {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.add-content_img {
+  width: 60px;
+  height: 60px;
+  align-self: center;
+}
+
+.add-content_text {
+  font-size: 32rpx;
+  display: initial;
+  color: gray;
+  text-align: center;
+  margin-top: 10px;
+}

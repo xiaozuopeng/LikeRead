@@ -17,4 +17,15 @@
       </view>
     </navigator>
   </view>
+  <view class='add-item' bindtap='clickAdd'>
+    <image src='../../../images/icon_add.png' class='add-img'></image>
+    <text class='add-text'>添加你喜欢的小说</text>
+  </view>
+</view>
+
+<view style="height:{{winHeight}}px;display:{{isAddHidden?'none':'flex'}};justify-content:center;align-items:center;">
+  <view class='add-content' bindtap='clickAdd'>
+    <image src='../../../images/icon_add.png' class='add-content_img'></image>
+    <view class='add-content_text'>添加你喜欢的小说</view>
+  </view>
 </view>
