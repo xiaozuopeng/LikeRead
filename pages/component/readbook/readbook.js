@@ -159,9 +159,11 @@ Page({
   //点击章节条目
   clickChapterItem: function (e) {
     let index = parseInt(e.currentTarget.id);
+    let _index = this.data.index;
     wx.setStorageSync(this.data.bookId + 'index', index);
+    console.log(_index * 100 + index)
     this.setData({
-      chapterIndex: index,
+      chapterIndex: _index * 100 + index,
       isChaptersHidden: true
     });
 
@@ -243,7 +245,7 @@ Page({
   //获取章节内容
   getChapterDetail: function () {
     let chapterIndex = this.data.chapterIndex;
-    let chapters = this.data.chapters;
+    let chapters = this.data.chaptersData.chapters;
     let _link = encodeURIComponent(chapters[chapterIndex].link);
     new MyHttp({}, 'POST', 'chapter/' + _link, config.GLOBAL_CHAPTER_DOMAIN).then((res) => {
       if (res.statusCode == 200 && res.data != null) {

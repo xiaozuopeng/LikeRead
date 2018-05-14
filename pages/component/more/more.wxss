@@ -1,28 +1,22 @@
 .more-page {
-  padding: 20px;
 }
 
-.userinfo {
+.user-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px;
+  border-bottom: 10px solid #f7f7f7
 }
 
-.userinfo-avatar {
+.user-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
 
-.userinfo-nickname {
+.user-nick-name {
   color: #aaa;
 }
 
-.user-motto {
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
