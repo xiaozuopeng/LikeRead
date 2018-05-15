@@ -4,7 +4,7 @@
     <block wx:for="{{classifies.male}}" wx:for-item="maleItem" wx:key="{{maleItem._id}}">
       <navigator url="../classify/classifylist?gender=male&major={{maleItem.name}}" class="weui-grid" hover-class="weui-grid_active">
         <view class="weui-grid__label" style='font-size:28rpx'>{{maleItem.name}}</view>
-        <view class="weui-grid__label" style='font-size:20rpx'>{{maleItem.bookCount}}本</view>
+        <view class="weui-grid__label" style='font-size:20rpx;color:gray'>{{maleItem.bookCount}}本</view>
       </navigator>
     </block>
   </view>
@@ -13,7 +13,7 @@
     <block wx:for="{{classifies.female}}" wx:for-item="femaleItem" wx:key="{{femaleItem._id}}">
       <navigator url="../classify/classifylist?gender=female&major={{femaleItem.name}}" class="weui-grid" hover-class="weui-grid_active">
         <view class="weui-grid__label" style='font-size:28rpx'>{{femaleItem.name}}</view>
-        <view class="weui-grid__label" style='font-size:20rpx'>{{femaleItem.bookCount}}本</view>
+        <view class="weui-grid__label" style='font-size:20rpx;color:gray'>{{femaleItem.bookCount}}本</view>
       </navigator>
     </block>
   </view>

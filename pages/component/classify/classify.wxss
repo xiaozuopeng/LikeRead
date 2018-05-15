@@ -3,3 +3,7 @@
   padding: 10px;
   text-align: center;
 }
+
+.weui-grid {
+   padding: 10px; 
+}
