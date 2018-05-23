@@ -3,7 +3,7 @@
     <scroll-view scroll-y="true">
       <view class='title' style='font-size:{{contentFontSize}}rpx'>{{chapterContent.title}}</view>
       <view class='content' style='font-size:{{contentFontSize}}rpx'>
-        <text style='word-break: break-all'>{{chapterContent.body}}</text>
+        <text class='text-body' decode="{{true}}" space="true">{{chapterContent.body}}</text>
       </view>
       <view class='footer-btn'>
         <button class='pre-btn' disabled='{{isPreDisable}}' bindtap='previousChapter'>上一章</button>

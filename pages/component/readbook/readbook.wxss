@@ -14,6 +14,17 @@
   margin-top: 10px;
 }
 
+.text-body {
+  text-indent: 2em;
+  -webkit-appearance: textarea;
+  -webkit-rtl-ordering: logical;
+  flex-direction: column;
+  resize: auto;
+  cursor: text;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 .footer-btn {
   width: 100%;
   margin-top: 20px;

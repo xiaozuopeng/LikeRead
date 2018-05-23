@@ -252,6 +252,7 @@ Page({
         wx.hideToast();
         let _data = res.data.chapter;
         _data.title = chapters[chapterIndex].title;
+        _data.body = _data.body.replace(/\s+/g, "\n&emsp;&emsp;")
         // console.log(_data)
         this.setData({
           chapterContent: _data,
