@@ -16,12 +16,12 @@
 
 .text-body {
   text-indent: 2em;
-  -webkit-appearance: textarea;
-  -webkit-rtl-ordering: logical;
+  /* -webkit-appearance: textarea; */
+   /* -webkit-rtl-ordering: logical;
   flex-direction: column;
   resize: auto;
-  cursor: text;
-  white-space: pre-wrap;
+  cursor: text; 
+  white-space: pre-wrap; */
   word-wrap: break-word;
 }
 

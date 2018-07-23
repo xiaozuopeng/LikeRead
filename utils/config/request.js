@@ -1,4 +1,4 @@
-import { GLOBAL_API_DOMAIN } from './config.js';
+import { GLOBAL_BASE } from './config.js';
 import { myStore } from '../tools/store';
 
 var deepCopy = function (o) {
@@ -81,7 +81,7 @@ function extend(obj) {
 
 function MyHttp(defaultParams, ALL_API) {
 
-  let _build_url = GLOBAL_API_DOMAIN;
+  let _build_url = GLOBAL_BASE;
   let resource = {};
 
   for (let actionName in ALL_API) {

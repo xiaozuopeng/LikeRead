@@ -4,7 +4,6 @@
     "pages/component/search/search",
     "pages/component/ranking/ranking",
     "pages/component/classify/classify",
-    "pages/component/more/more",
     "pages/component/ranking/rankingtwo",
     "pages/component/bookdetail/bookdetail",
     "pages/component/readbook/readbook",
@@ -48,12 +47,6 @@
         "iconPath": "images/tab_classify_normal.png",
         "selectedIconPath": "images/tab_classify_selected.png",
         "text": "分类"
-      },
-      {
-        "pagePath": "pages/component/more/more",
-        "iconPath": "images/tab_more_normal.png",
-        "selectedIconPath": "images/tab_more_selected.png",
-        "text": "更多"
       }
     ],
     "position": "bottom"

@@ -42,7 +42,9 @@ Page({
         });
       }
       else {
-        res.data && res.data.msg && utils.toast("error", res.data.msg);
+        res.data && res.data.msg && wx.showToast({
+          title: res.data.msg, icon: 'none', duration: 1000
+        });
       }
     })
   },

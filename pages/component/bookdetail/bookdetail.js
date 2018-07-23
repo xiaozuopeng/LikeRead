@@ -19,8 +19,22 @@ Page({
   },
 
   clickRecomment: function (e) {
+    let bookId = e.currentTarget.id
+    let isSaved = false;
+    let books = wx.getStorageSync('myBooks') || [];
+    if (books && books.length > 0) {
+      books.forEach(function (value, index, array) {
+        if (value._id == bookId) {
+          isSaved = true;
+        }
+      });
+    }
+
+    let btnText = isSaved ? '不追了' : '加追更'
     this.setData({
-      bookId: e.currentTarget.id
+      bookId: bookId,
+      isBookSaved: isSaved,
+      buttonText: btnText
     });
     this.getBookDetail();
     this.getRecommendList();
@@ -31,25 +45,36 @@ Page({
     let bookDetail = this.data.bookDetail;
     let isSaved = false;
     let _books = wx.getStorageSync('myBooks') || [];
-    console.log(bookId, _books)
+    let _index = 0;
     if (_books && _books.length > 0) {
-      _books.forEach(function (value, index, array) {
-
+      for (var i = 0; i < _books.length; i++) {
+        let value = _books[i];
         if (value._id == bookId) {
-          isSaved = false;
-          _books.splice(index, 1);
-          wx.removeStorageSync(bookId + 'index')
-          return true;//break
-        } else {
-          _books.unshift(bookDetail);
           isSaved = true;
+          _index = i;
+          console.log('-----111---------')
+          break;
+        } else {
+          isSaved = false;
+          console.log('-----222---------')
         }
-      });
+      }
+
+      if (isSaved) {
+        isSaved = false;
+        _books.splice(_index, 1);
+        wx.removeStorageSync(bookId + 'index');
+      } else {
+        _books.unshift(bookDetail);
+        isSaved = true;
+      }
 
     } else {
       _books.unshift(bookDetail);
       isSaved = true;
     }
+
+    console.log(isSaved)
     wx.setStorageSync('myBooks', _books);
     let btnText = isSaved ? '不追了' : '加追更'
     this.setData({
@@ -125,7 +150,9 @@ Page({
         })
       }
       else {
-        res.data && res.data.msg && utils.toast("error", res.data.msg);
+        res.data && res.data.msg && wx.showToast({
+          title: res.data.msg, icon: 'none', duration: 1000
+        });
       }
     });
   },
@@ -145,7 +172,9 @@ Page({
         });
       }
       else {
-        res.data && res.data.msg && utils.toast("error", res.data.msg);
+        res.data && res.data.msg && wx.showToast({
+          title: res.data.msg, icon: 'none', duration: 1000
+        });
       }
     })
   },
@@ -170,7 +199,9 @@ Page({
         });
       }
       else {
-        res.data && res.data.msg && utils.toast("error", res.data.msg);
+        res.data && res.data.msg && wx.showToast({
+          title: res.data.msg, icon: 'none', duration: 1000
+        });
       }
     })
   },

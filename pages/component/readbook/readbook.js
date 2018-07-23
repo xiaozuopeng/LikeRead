@@ -205,8 +205,13 @@ Page({
     new MyHttp({}, 'GET', 'mix-atoc/' + _id + '?view=chapters').then((res) => {
       if (res.statusCode == 200 && res.data != null) {
         wx.hideToast();
+        if (!res.data.ok) {
+          wx.showToast({
+            title: '暂无内容', icon: 'none', duration: 1000
+          })
+          return;
+        }
         let _data = res.data.mixToc;
-        // console.log(_data)
 
         let length = _data.chapters.length / 100;
 
@@ -224,7 +229,9 @@ Page({
         this.getChapterDetail();
       }
       else {
-        res.data && res.data.msg && utils.toast("error", res.data.msg);
+        res.data && res.data.msg && wx.showToast({
+          title: res.data.msg, icon: 'none', duration: 1000
+        });
       }
     })
   },
@@ -252,7 +259,7 @@ Page({
         wx.hideToast();
         let _data = res.data.chapter;
         _data.title = chapters[chapterIndex].title;
-        _data.body = _data.body.replace(/\s+/g, "\n&emsp;&emsp;")
+        _data.body = '&emsp;&emsp;' + _data.body.replace(/\s+/g, "\n&emsp;&emsp;")
         // console.log(_data)
         this.setData({
           chapterContent: _data,
@@ -264,7 +271,9 @@ Page({
         })
       }
       else {
-        res.data && res.data.msg && utils.toast("error", res.data.msg);
+        res.data && res.data.msg && wx.showToast({
+          title: res.data.msg, icon: 'none', duration: 1000
+        });
       }
     })
   },
